@@ -1595,6 +1595,15 @@ export const LiquidationHeatmap: React.FC<LiquidationHeatmapProps> = ({
             padding: 6px 4px;
             font-size: 0.7rem;
           }
+          .svg-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+          .heatmap-svg {
+            min-width: 780px;
+            height: 320px;
+            display: block;
+          }
         }
       `}</style>
     </div>
