@@ -309,6 +309,11 @@ export const Header: React.FC<HeaderProps> = ({
           .search-icon {
             left: 8px;
           }
+          @media (max-width: 480px) {
+            .logo-text {
+              display: none;
+            }
+          }
         }
       `}</style>
     </header>
