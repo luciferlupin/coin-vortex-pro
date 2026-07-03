@@ -286,6 +286,18 @@ h1, h2, h3, h4 {
   animation: flashRed 1s ease-out;
 }
 
+.show-mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .show-mobile {
+    display: inline;
+  }
+  .hide-mobile {
+    display: none;
+  }
+}
+
 /* Grid Layout Utilities */
 .grid-cols-4 {
   display: grid;

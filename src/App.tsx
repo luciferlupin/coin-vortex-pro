@@ -104,6 +104,18 @@ function App() {
     }
   }, [isLightTheme]);
 
+  // Sync body scroll lock on mobile menu open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const activeTokenStats = tokens.find((t) => t.symbol === selectedToken);
 
   return (

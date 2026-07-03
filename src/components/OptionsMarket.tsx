@@ -113,9 +113,18 @@ export const OptionsMarket: React.FC<OptionsMarketProps> = ({
             <table className="custom-table options-chain-table">
               <thead>
                 <tr>
-                  <th className="align-left">Calls Open Interest</th>
-                  <th className="align-center">Strike Price</th>
-                  <th className="align-right">Puts Open Interest</th>
+                  <th className="align-left">
+                    <span className="hide-mobile">Calls Open Interest</span>
+                    <span className="show-mobile">Calls OI</span>
+                  </th>
+                  <th className="align-center">
+                    <span className="hide-mobile">Strike Price</span>
+                    <span className="show-mobile">Strike</span>
+                  </th>
+                  <th className="align-right">
+                    <span className="hide-mobile">Puts Open Interest</span>
+                    <span className="show-mobile">Puts OI</span>
+                  </th>
                 </tr>
               </thead>
               <tbody>

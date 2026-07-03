@@ -369,6 +369,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
             transition: transform var(--transition-normal);
             box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
             background: var(--bg-sidebar);
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 20px;
           }
           .sidebar-container.mobile-open {
             transform: translateX(0);
