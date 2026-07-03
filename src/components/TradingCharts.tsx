@@ -192,6 +192,27 @@ export const TradingCharts: React.FC<TradingChartsProps> = ({
           border-radius: 8px;
           overflow: hidden;
         }
+
+        @media (max-width: 768px) {
+          .view-header {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+          }
+          .view-mode-selector {
+            width: 100%;
+          }
+          .mode-btn {
+            flex: 1;
+            justify-content: center;
+          }
+          .single-chart-wrapper {
+            height: 380px;
+          }
+          .grid-chart-wrapper {
+            height: 240px;
+          }
+        }
       `}</style>
     </div>
   );

@@ -1586,6 +1586,15 @@ export const LiquidationHeatmap: React.FC<LiquidationHeatmapProps> = ({
             flex-direction: column;
             gap: 8px;
           }
+          .timeframe-selector {
+            width: 100%;
+          }
+          .range-btn {
+            flex: 1;
+            text-align: center;
+            padding: 6px 4px;
+            font-size: 0.7rem;
+          }
         }
       `}</style>
     </div>
