@@ -1158,6 +1158,21 @@ export const HyperliquidHub: React.FC<HyperliquidHubProps> = ({
             max-height: 550px;
           }
         }
+        @media (max-width: 768px) {
+          .view-header-row {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+          }
+          .diagnostic-panel {
+            min-width: 100%;
+            width: 100%;
+          }
+          .stream-card, .whale-card {
+            height: auto;
+            max-height: 480px;
+          }
+        }
       `}</style>
     </div>
   );

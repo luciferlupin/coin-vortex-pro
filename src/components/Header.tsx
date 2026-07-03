@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Sun, Moon, TrendingUp, TrendingDown, Layers } from 'lucide-react';
+import { Search, Sun, Moon, TrendingUp, TrendingDown, Layers, Menu } from 'lucide-react';
 import type { TokenStats } from '../services/apiService';
 
 interface HeaderProps {
@@ -8,6 +8,7 @@ interface HeaderProps {
   onSelectToken: (symbol: string) => void;
   isLightTheme: boolean;
   onToggleTheme: () => void;
+  onToggleMobileMenu?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -16,15 +17,23 @@ export const Header: React.FC<HeaderProps> = ({
   onSelectToken,
   isLightTheme,
   onToggleTheme,
+  onToggleMobileMenu,
 }) => {
   return (
     <header className="header-container">
       {/* Top Bar */}
       <div className="top-bar">
-        <div className="logo-section">
-          <Layers className="logo-icon" size={24} />
-          <span className="logo-text">CoinVortex</span>
-          <span className="badge">PRO</span>
+        <div className="left-controls">
+          {onToggleMobileMenu && (
+            <button onClick={onToggleMobileMenu} className="mobile-menu-btn" aria-label="Toggle navigation menu">
+              <Menu size={20} />
+            </button>
+          )}
+          <div className="logo-section">
+            <Layers className="logo-icon" size={24} />
+            <span className="logo-text">CoinVortex</span>
+            <span className="badge">PRO</span>
+          </div>
         </div>
 
         {/* Global Market Stats Bar */}
@@ -203,6 +212,28 @@ export const Header: React.FC<HeaderProps> = ({
           border-color: var(--text-secondary);
           background: var(--bg-card-hover);
         }
+        .left-controls {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .mobile-menu-btn {
+          display: none;
+          background: var(--bg-card);
+          border: 1px solid var(--border-color);
+          color: var(--text-primary);
+          border-radius: 8px;
+          width: 34px;
+          height: 34px;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all var(--transition-fast);
+        }
+        .mobile-menu-btn:hover {
+          border-color: var(--text-secondary);
+          background: var(--bg-card-hover);
+        }
         
         /* Ticker tape styles */
         .ticker-tape {
@@ -253,6 +284,31 @@ export const Header: React.FC<HeaderProps> = ({
           align-items: center;
           font-size: 0.75rem;
           font-weight: 600;
+        }
+
+        /* Mobile specific style overrides */
+        @media (max-width: 768px) {
+          .top-bar {
+            padding: 10px 12px;
+          }
+          .mobile-menu-btn {
+            display: flex;
+          }
+          .logo-text {
+            font-size: 1.05rem;
+          }
+          .badge {
+            font-size: 0.55rem;
+            padding: 1px 4px;
+          }
+          .token-dropdown {
+            max-width: 100px;
+            font-size: 0.75rem;
+            padding: 6px 8px 6px 24px;
+          }
+          .search-icon {
+            left: 8px;
+          }
         }
       `}</style>
     </header>

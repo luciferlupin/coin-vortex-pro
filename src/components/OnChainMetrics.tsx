@@ -646,6 +646,18 @@ export const OnChainMetrics: React.FC<OnChainMetricsProps> = ({
           flex-wrap: wrap;
           gap: 4px;
         }
+        @media (max-width: 768px) {
+          .onchain-menu {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 6px;
+          }
+          .metric-btn {
+            flex-shrink: 0;
+            white-space: nowrap;
+          }
+        }
         .metric-btn {
           border: none;
           background: transparent;

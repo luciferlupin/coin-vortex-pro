@@ -1556,6 +1556,37 @@ export const LiquidationHeatmap: React.FC<LiquidationHeatmapProps> = ({
         .ping-flash-circle {
           animation: pingPulse 1.5s infinite ease-out;
         }
+
+        @media (max-width: 768px) {
+          .heatmap-selectors {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+          }
+          .selector-group {
+            justify-content: space-between;
+          }
+          .leverage-filter-badges {
+            flex-wrap: wrap;
+          }
+          .chart-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+          }
+          .legend-section {
+            flex-wrap: wrap;
+            gap: 8px;
+          }
+          .setup-levels-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+          }
+          .sizer-inputs {
+            flex-direction: column;
+            gap: 8px;
+          }
+        }
       `}</style>
     </div>
   );

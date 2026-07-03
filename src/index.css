@@ -299,10 +299,48 @@ h1, h2, h3, h4 {
   gap: 24px;
 }
 
+.grid-cols-5 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
 .grid-dashboard {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 24px;
+}
+
+/* Mobile responsive updates */
+.mobile-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-backdrop {
+    display: block;
+  }
+  .content-body {
+    padding: 12px;
+  }
+  .card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+  .grid-cols-4 {
+    gap: 12px;
+  }
+  .grid-cols-2, .grid-dashboard {
+    gap: 16px;
+  }
 }
 
 @media (max-width: 1024px) {

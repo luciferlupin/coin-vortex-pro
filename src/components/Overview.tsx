@@ -565,6 +565,23 @@ export const Overview: React.FC<OverviewProps> = ({
           color: var(--text-muted);
           font-size: 0.85rem;
         }
+
+        @media (max-width: 768px) {
+          .view-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+          }
+          .view-title {
+            font-size: 1.25rem;
+          }
+          .chart-wrapper {
+            height: 260px;
+          }
+          .feed-card {
+            max-height: 350px;
+          }
+        }
       `}</style>
     </div>
   );

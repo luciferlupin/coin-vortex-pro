@@ -26,6 +26,8 @@ interface SidebarProps {
   tokens: TokenStats[];
   selectedToken: string;
   onSelectToken: (symbol: string) => void;
+  mobileOpen?: boolean;
+  onCloseMobile?: () => void;
 }
 
 interface NavItem {
@@ -43,7 +45,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
   tokens,
   selectedToken,
   onSelectToken,
+  mobileOpen,
+  onCloseMobile,
 }) => {
+  const handleSelectToken = (symbol: string) => {
+    onSelectToken(symbol);
+    if (onCloseMobile) onCloseMobile();
+  };
+
+  const handleSelectView = (viewId: DashboardView) => {
+    onChangeView(viewId);
+    if (onCloseMobile) onCloseMobile();
+  };
+
   const menuItems: NavItem[] = [
     { id: 'overview', label: 'Overview', icon: LayoutDashboard, color: 'var(--color-accent)' },
     { id: 'hyperliquid', label: 'Hyperliquid Hub', icon: Zap, color: 'var(--color-info)' },
@@ -59,7 +73,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
-    <aside className={`sidebar-container ${collapsed ? 'collapsed' : ''}`}>
+    <aside className={`sidebar-container ${collapsed ? 'collapsed' : ''} ${mobileOpen ? 'mobile-open' : ''}`}>
       <div className="sidebar-nav">
         {/* Watchlist Coin Selector */}
         <div className="sidebar-section-title">
@@ -72,7 +86,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             return (
               <button
                 key={token.symbol}
-                onClick={() => onSelectToken(token.symbol)}
+                onClick={() => handleSelectToken(token.symbol)}
                 className={`coin-row-btn ${isActive ? 'active' : ''}`}
                 title={`${token.name} (${token.symbol})`}
               >
@@ -108,7 +122,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           return (
             <button
               key={item.id}
-              onClick={() => onChangeView(item.id)}
+              onClick={() => handleSelectView(item.id)}
               className={`nav-button ${isActive ? 'active' : ''}`}
               title={item.label}
               style={{
@@ -339,6 +353,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
         .coin-row-change {
           font-size: 0.65rem;
           font-weight: 600;
+        }
+
+        /* Responsive sidebar updates */
+        @media (max-width: 768px) {
+          .sidebar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: 1000;
+            transform: translateX(-100%);
+            width: 280px;
+            height: 100vh;
+            transition: transform var(--transition-normal);
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+            background: var(--bg-sidebar);
+          }
+          .sidebar-container.mobile-open {
+            transform: translateX(0);
+          }
+          .collapse-btn {
+            display: none;
+          }
         }
       `}</style>
     </aside>

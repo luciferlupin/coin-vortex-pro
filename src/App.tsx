@@ -22,6 +22,7 @@ function App() {
   const [selectedToken, setSelectedToken] = useState<string>('BTC');
   const [isLightTheme, setIsLightTheme] = useState<boolean>(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   
   // Market statistics state
   const [tokens, setTokens] = useState<TokenStats[]>([]);
@@ -116,7 +117,17 @@ function App() {
         tokens={tokens}
         selectedToken={selectedToken}
         onSelectToken={setSelectedToken}
+        mobileOpen={mobileMenuOpen}
+        onCloseMobile={() => setMobileMenuOpen(false)}
       />
+
+      {/* Mobile Menu Backdrop */}
+      {mobileMenuOpen && (
+        <div 
+          className="mobile-backdrop" 
+          onClick={() => setMobileMenuOpen(false)} 
+        />
+      )}
 
       {/* Main viewport */}
       <div className="main-content">
@@ -126,6 +137,7 @@ function App() {
           onSelectToken={setSelectedToken}
           isLightTheme={isLightTheme}
           onToggleTheme={() => setIsLightTheme(!isLightTheme)}
+          onToggleMobileMenu={() => setMobileMenuOpen(!mobileMenuOpen)}
         />
 
         {/* View render router */}
